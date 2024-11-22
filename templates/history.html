@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Access History for {{ user['username'] }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Access History for {{ user['username'] }}</h1>
+    <a href="{{ url_for('admin_dashboard') }}">Back to Dashboard</a>
+    <table>
+        <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Result</th>
+        </tr>
+        {% for attempt in history %}
+        <tr>
+            <td>{{ attempt['attempt_date'] }}</td>
+            <td>{{ attempt['attempt_time'] }}</td>
+            <td>{{ attempt['result'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

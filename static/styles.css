@@ -1,0 +1,243 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Light gray background */
+    color: #333; /* Dark text for readability */
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #2c3e50; /* Dark blue-gray */
+    color: #ecf0f1; /* Light gray for text */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #ecf0f1;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Header */
+.dashboard-header {
+    text-align: center;
+    padding: 20px;
+    background-color: #34495e; /* Slightly lighter dark blue-gray */
+    color: #fff;
+    font-size: 24px;
+}
+
+/* Buttons */
+button, .btn {
+    background-color: #3498db; /* Bright blue */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover, .btn:hover {
+    background-color: #2980b9; /* Darker blue */
+}
+
+button:disabled {
+    background-color: #bdc3c7; /* Gray for disabled buttons */
+    cursor: not-allowed;
+}
+
+/* Forms */
+form {
+    max-width: 500px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form input, form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form input:focus, form select:focus, form textarea:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+/* Tables */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+table th {
+    background-color: #3498db; /* Bright blue */
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background-color: #f4f4f9; /* Light gray for alternating rows */
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Links */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Cards (Optional for Stats) */
+.card {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 15px;
+    text-align: center;
+}
+
+.card h3 {
+    color: #3498db;
+    margin: 10px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    form {
+        width: 90%;
+    }
+
+    table {
+        width: 100%;
+    }
+}
+
+/* Login Page Styles */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f4f4f9; /* Light gray background */
+}
+
+.login-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.login-card h2 {
+    color: #2c3e50; /* Dark blue-gray */
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.login-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-card label {
+    text-align: left;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333; /* Dark text for labels */
+}
+
+.login-card input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.login-card input:focus {
+    border-color: #3498db; /* Bright blue */
+    outline: none;
+}
+
+.login-card button {
+    background-color: #3498db; /* Bright blue */
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.login-card button:hover {
+    background-color: #2980b9; /* Darker blue */
+}
+
+.error-message {
+    color: #e74c3c; /* Red for error messages */
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+.success-message {
+    color: #27ae60; /* Green for success messages */
+    font-size: 14px;
+    margin-top: 10px;
+}
+

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function updateTimeSlots() {
+            const role = document.getElementById('role').value;
+            const accessStart = document.getElementById('access_start');
+            const accessEnd = document.getElementById('access_end');
+            const is24Hours = document.getElementById('is_24_hours');
+
+            if (role === 'admin') {
+                accessStart.value = '00:00';
+                accessEnd.value = '23:59';
+                accessStart.min = '00:00';
+                accessStart.max = '23:59';
+                accessEnd.min = '00:00';
+                accessEnd.max = '23:59';
+                accessStart.disabled = true;
+                accessEnd.disabled = true;
+                is24Hours.checked = true;
+                is24Hours.disabled = true;
+            } else if (role === 'guest') {
+                accessStart.disabled = false;
+                accessEnd.disabled = false;
+                accessStart.min = '10:00';
+                accessStart.max = '14:00';
+                accessEnd.min = '10:00';
+                accessEnd.max = '14:00';
+                accessStart.value = '10:00';
+                accessEnd.value = '14:00';
+                is24Hours.checked = false;
+                is24Hours.disabled = true;
+            } else if (role === 'employee') {
+                accessStart.disabled = false;
+                accessEnd.disabled = false;
+                accessStart.min = '10:00';
+                accessStart.max = '19:00';
+                accessEnd.min = '10:00';
+                accessEnd.max = '19:00';
+                accessStart.value = '10:00';
+                accessEnd.value = '19:00';
+                is24Hours.checked = false;
+                is24Hours.disabled = true;
+            }
+        }
+
+        function validateForm(event) {
+            const role = document.getElementById('role').value;
+            const accessStart = document.getElementById('access_start').value;
+            const accessEnd = document.getElementById('access_end').value;
+
+            if (role !== 'admin') {
+                const minTime = new Date(`1970-01-01T${document.getElementById('access_start').min}`);
+                const maxTime = new Date(`1970-01-01T${document.getElementById('access_start').max}`);
+                const startTime = new Date(`1970-01-01T${accessStart}`);
+                const endTime = new Date(`1970-01-01T${accessEnd}`);
+
+                if (startTime < minTime || startTime > maxTime || endTime < minTime || endTime > maxTime) {
+                    alert('Access times are out of bounds for the selected role.');
+                    event.preventDefault();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Update Access for User {{ user['username'] }}</h1>
+    <form action="{{ url_for('update_access', uid=user['UID']) }}" method="post" onsubmit="validateForm(event)">
+        <label for="role">Role:</label>
+        <select name="role" id="role" onchange="updateTimeSlots()">
+            <option value="admin" {% if user['role'] == 'admin' %}selected{% endif %}>Admin</option>
+            <option value="guest" {% if user['role'] == 'guest' %}selected{% endif %}>Guest</option>
+            <option value="employee" {% if user['role'] == 'employee' %}selected{% endif %}>Employee</option>
+        </select><br>
+
+        <label>Access Start:</label>
+        <input type="time" name="access_start" id="access_start" value="{{ user['access_start'] }}"><br>
+
+        <label>Access End:</label>
+        <input type="time" name="access_end" id="access_end" value="{{ user['access_end'] }}"><br>
+
+        <label>24-Hour Access:</label>
+        <input type="checkbox" name="is_24_hours" id="is_24_hours" {% if user['is_24_hours'] == 1 %}checked{% endif %}><br>
+
+        <button type="submit">Update Access</button>
+    </form>
+
+    <script>
+        // Initialize time slots and 24-hour access checkbox based on the current role
+        window.onload = function() {
+            updateTimeSlots();
+        };
+    </script>
+</body>
+</html>

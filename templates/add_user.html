@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add User</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Add New User</h1>
+    <form action="{{ url_for('add_user') }}" method="post" enctype="multipart/form-data">
+        <label>Username:</label><input type="text" name="username" required><br>
+        <label>PIN:</label><input type="text" name="pin" required><br>
+        <label>Email:</label><input type="email" name="email_id" required><br>
+        <label>Access Start:</label><input type="time" name="access_start"><br>
+        <label>Access End:</label><input type="time" name="access_end"><br>
+        <label>24-Hour Access:</label><input type="checkbox" name="is_24_hours"><br>
+        <label>Upload Photo:</label><input type="file" name="photo" accept="image/*" required><br>
+        <button type="submit">Add User</button>
+    </form>
+</body>
+</html>
