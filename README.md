@@ -59,5 +59,5 @@ When a user approaches, a motion sensor activates the camera to capture an image
 
 ---
 
-## Authors
-This project was developed as part of the **Nirma University Summer 2024 Program**, funded by Nirma University, Ahmedabad. For further queries, contact [your_email@example.com].
+![image](https://github.com/user-attachments/assets/5aa864bb-748b-4431-b41b-ab8a104d4b04)
+
